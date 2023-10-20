@@ -108,10 +108,10 @@ class CategoryService
         return $data;
     }
 
-    public function getMultinivel(string $name, $options = [])
+    public function getMultinivel(string $name, $options = [], int $exceptCategoryID = null)
     {
 
-        $array = $this->categoryModel->asArray()->orderBy('id', 'DESC')->findAll();
+        $array = $this->categoryModel->getParentCategories($exceptCategoryID);
 
         $class_form = "";
         if (isset($options['class'])) {

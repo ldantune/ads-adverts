@@ -21,7 +21,6 @@
                     // Erro
                     toastr.error('Verifique os erros e tente novamente');
                     $.each(response.errors, function(field, value) {
-                        console.log(field);
                         $(form).find('span.' + field).text(value);
                     });
                     return;
@@ -36,10 +35,10 @@
                 $('.modal-title').text('Criar categoria');
                 $(form).attr('action', '<?php echo route_to('categories.create') ?>');
                 $(form).find('input[name="id"]').val('');
-                $(['name=_method']).remove();
+                $('input[name="_method"]').remove();
             },
             error: function() {
-                alert('Erro no backend')
+                toastr.success('Erro no backend');
             }
         })
     });

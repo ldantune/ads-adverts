@@ -73,7 +73,7 @@ class CategoriesController extends BaseController
 
         $response =[
             'category' => $category,
-            'parents' => $this->categoryService->getMultinivel('parent_id', $options)
+            'parents' => $this->categoryService->getMultinivel('parent_id', $options, $category->id)
         ];
         return $this->response->setJSON($response);
     }

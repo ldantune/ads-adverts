@@ -41,4 +41,19 @@ class CategoryModel extends MyBaseModel
 
         return $data;
     }
+
+    public function getParentCategories(int $exceptCategoryID = null): array
+    {
+        $builder = $this;
+
+        if ($exceptCategoryID) {
+
+            $builder->where('id !=', $exceptCategoryID);
+        }
+
+        $builder->orderBy('name', 'DESC');
+        $builder->asArray();
+
+        return $builder->findAll();
+    }
 }
