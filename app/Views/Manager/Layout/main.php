@@ -12,6 +12,7 @@
         <link rel="icon" type="image/x-icon" href="<?php echo site_url('manager_assets/')?>assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="<?php echo site_url('manager_assets/')?>css/styles.css" rel="stylesheet" />
+        <link href="<?php echo site_url('manager_assets/toastr/toastr.min.css') ?>" rel="stylesheet" />
 
         <?php echo $this->renderSection('styles'); ?>
     </head>
@@ -21,8 +22,8 @@
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Dashboard</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Shortcuts</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="<?php echo  route_to('manager')?>">Dashboard</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="<?php echo  route_to('categories')?>">Categorias</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Overview</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
@@ -59,10 +60,13 @@
                 
             </div>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="<?php echo site_url('manager_assets/js/scripts.js')?>"></script>
+        <script src="<?php echo site_url('manager_assets/toastr/toastr.min.js'); ?>"></script>
 
         <?php echo $this->renderSection('scripts'); ?>
     </body>
