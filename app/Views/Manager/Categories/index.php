@@ -26,7 +26,7 @@
                     <button id="createCategoryBtn" class="btn btn-success btn-sm float-end"><?php echo lang('App.btn_new'); ?></button>
                 </div>
                 <div class="card-body">
-                <a class="btn btn-info btn-sm mt-2 mb-4" href="<?php echo route_to('categories.archived'); ?>"><?php echo lang('App.btn_all_archived'); ?></a>
+                    <a class="btn btn-info btn-sm mt-2 mb-4" href="<?php echo route_to('categories.archived'); ?>"><?php echo lang('App.btn_all_archived'); ?></a>
                     <table class="table" id="dataTable">
                         <thead>
                             <tr>

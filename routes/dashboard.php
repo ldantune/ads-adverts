@@ -14,8 +14,8 @@ $routes->group('{locale}/dashboard', ['namespace' => 'App\Controllers\Dashboard'
     $routes->put('access-update', 'DashboardController::updateAccess', ['as' => 'access.update']);
 
 
-    // User ads
-    $routes->group('adverts', ['namespace' => 'App\Controllers\Dashboard', 'filter' => 'subscription'], function ($routes) {
+    // User ads 'filter' => 'subscription'
+    $routes->group('adverts', ['namespace' => 'App\Controllers\Dashboard'], function ($routes) {
 
         $routes->get('my', 'AdvertsUserController::index', ['as' => 'my.adverts']);
         $routes->get('my-archived', 'AdvertsUserController::archived', ['as' => 'my.archived.adverts']);
