@@ -2,11 +2,14 @@
 
 namespace App\Controllers;
 
-class Home extends BaseController
+class HomeController extends BaseController
 {
     public function index()
     {
-        return view('welcome_message');
+        $data = [
+            'title'=>'Anúncios recentes'
+        ];
+        return view('Web/Home/index', $data);
     }
 
     public function dashboard()
