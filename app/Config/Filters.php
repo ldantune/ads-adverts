@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use App\Filters\AuthFilter;
+use App\Filters\SuperadminFilter;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -24,6 +26,24 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
+
+        //'auth'       => \Fluent\Auth\Filters\AuthenticationFilter::class,
+        'auth' => AuthFilter::class,
+        'auth.basic' => \Fluent\Auth\Filters\AuthenticationBasicFilter::class,
+        'can'        => \Fluent\Auth\Filters\AuthorizeFilter::class,
+        'confirm'    => [
+            \Fluent\Auth\Filters\AuthenticationFilter::class,
+            \Fluent\Auth\Filters\ConfirmPasswordFilter::class,
+        ],
+        'guest'    => \Fluent\Auth\Filters\RedirectAuthenticatedFilter::class,
+        'throttle' => \Fluent\Auth\Filters\ThrottleFilter::class,
+        'verified' => \Fluent\Auth\Filters\EmailVerifiedFilter::class,
+
+        'superadmin' => [
+            AuthFilter::class,
+            SuperadminFilter::class
+        ]
+
     ];
 
     /**

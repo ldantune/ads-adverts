@@ -42,7 +42,7 @@ Events::on('pre_system', static function () {
      * --------------------------------------------------------------------
      * If you delete, they will no longer be collected.
      */
-    if (CI_DEBUG && ! is_cli()) {
+    if (CI_DEBUG && !is_cli()) {
         Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect');
         Services::toolbar()->respond();
         // Hot Reload route - for framework use on the hot reloader.
@@ -52,4 +52,17 @@ Events::on('pre_system', static function () {
             });
         }
     }
+});
+
+    /*
+     * --------------------------------------------------------------------
+     * Events do auth packege
+     * --------------------------------------------------------------------
+     */
+Events::on(\Fluent\Auth\Contracts\VerifyEmailInterface::class, function ($email) {
+    (new \App\Notifications\VerificationNotification($email))->send();
+});
+
+Events::on(\Fluent\Auth\Contracts\ResetPasswordInterface::class, function ($email, $token) {
+    (new \App\Notifications\ResetPasswordNotification($email, $token))->send();
 });

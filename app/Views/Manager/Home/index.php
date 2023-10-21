@@ -1,18 +1,31 @@
-<?= $this->extend('Manager\Layout\main') ?>
+<?= $this->extend('Manager/Layout/main'); ?>
 
-<?= $this->section('title') ?>
-    <?php echo $title ?? '' ?>
-<?= $this->endSection() ?>
+<?php $this->section('title') ?>
 
-<?= $this->section('styles') ?>
+<?php echo $title ?? ''; ?>
 
-<?= $this->endSection() ?>
+<?= $this->endSection(); ?>
+
+
+<?php $this->section('styles') ?>
+
+
+<?= $this->endSection(); ?>
+
 
 <?= $this->section('content') ?>
-    <h1>Hello World!</h1>
+
+<!-- Envio para o template principal o conteúdo dessa view -->
+
+<div class="container-fluid">
+    <h1><?php echo $title ?? ''; ?></h1>
+</div>
+
 <?= $this->endSection() ?>
 
 
 <?= $this->section('scripts') ?>
+
+<!-- Envio para o template principal os arquivos scripts dessa view -->
 
 <?= $this->endSection() ?>
