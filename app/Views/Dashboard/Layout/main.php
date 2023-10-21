@@ -19,7 +19,6 @@
     <link href="<?php echo site_url('web/'); ?>plugins/slick-carousel/slick/slick-theme.css" rel="stylesheet">
     <!-- Fancy Box -->
     <link href="<?php echo site_url('web/'); ?>plugins/fancybox/jquery.fancybox.pack.css" rel="stylesheet">
-
     <link href="<?php echo site_url('web/'); ?>plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
     <link href="<?php echo site_url('web/'); ?>plugins/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css" rel="stylesheet">
     <!-- CUSTOM CSS -->
@@ -30,12 +29,22 @@
 
     <link href="<?php echo site_url('manager_assets/toastr/toastr.min.css') ?>" rel="stylesheet" />
 
+
+
+    <style>
+        .btn-sm {
+            padding: 6px 20px;
+            font-size: .875rem;
+            line-height: 1.5;
+            border-radius: .2rem;
+        }
+    </style>
+
     <?php echo $this->renderSection('styles'); ?>
 
 </head>
 
 <body class="body-wrapper">
-
 
     <section>
         <div class="container">
@@ -70,7 +79,6 @@
                                         </li>
                                     <?php endif; ?>
                                 <?php endif; ?>
-
                                 <li class="nav-item dropdown dropdown-slide">
                                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Pages <span><i class="fa fa-angle-down"></i></span>
@@ -89,34 +97,19 @@
                                 </li>
                                 <li class="nav-item dropdown dropdown-slide">
                                     <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Listing <span><i class="fa fa-angle-down"></i></span>
+                                        <?php echo $language; ?> <span><i class="fa fa-angle-down"></i></span>
                                     </a>
                                     <!-- Dropdown list -->
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
+                                    <!-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+                                    <a class="dropdown-item" href="<?php echo $urls->url_en; ?>">English</a>
+                                    <a class="dropdown-item" href="<?php echo $urls->url_es; ?>">Españhol</a>
+                                    <a class="dropdown-item" href="<?php echo $urls->url_pt_br; ?>">Português Brasil</a>
+
+                                    </div> -->
                                 </li>
                             </ul>
                             <ul class="navbar-nav ml-auto mt-10">
-                                <?php if (!auth()->check()) : ?>
-                                    <li class="nav-item">
-                                        <a class="nav-link login-button" href="<?php echo route_to('login'); ?>">Login</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link login-button" href="<?php echo route_to('register'); ?>">Registre-se</a>
-                                    </li>
-                                <?php else : ?>
-                                    <li class="nav-item">
-                                        <form method="POST" action="<?= route_to('logout') ?>">
-                                            <?php echo csrf_field(); ?>
-                                            <button class="nav-link login-button" type="submit">Logout</button>
-                                        </form>
-                                    </li>
-                                <?php endif; ?>
-
                                 <li class="nav-item">
                                     <a class="nav-link add-button" href="<?php echo route_to('dashboard') ?>"><i class="fa fa-plus-circle"></i> Criar anúncio</a>
                                 </li>
@@ -128,81 +121,38 @@
         </div>
     </section>
 
-    <!--===============================
-=            Hero Area            =
-================================-->
-
-    <section class="hero-area bg-1 text-center overly">
-        <!-- Container Start -->
+    <section class="page-search">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <!-- Header Contetnt -->
-                    <div class="content-block">
-                        <h1>Buy & Sell Near You </h1>
-                        <p>Join the millions who buy and sell from each other <br> everyday in local communities around the world</p>
-                        <div class="short-popular-category-list text-center">
-                            <h2>Popular Category</h2>
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <a href=""><i class="fa fa-bed"></i> Hotel</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href=""><i class="fa fa-grav"></i> Fitness</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href=""><i class="fa fa-car"></i> Cars</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href=""><i class="fa fa-cutlery"></i> Restaurants</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href=""><i class="fa fa-coffee"></i> Cafe</a>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
                     <!-- Advance Search -->
                     <div class="advance-search">
-                        <form action="#">
-                            <div class="row">
-                                <!-- Store Search -->
-                                <div class="col-lg-6 col-md-12">
-                                    <div class="block d-flex">
-                                        <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="search" placeholder="Search for store">
-                                    </div>
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <input type="text" class="form-control" id="inputtext4" placeholder="What are you looking for">
                                 </div>
-                                <div class="col-lg-6 col-md-12">
-                                    <div class="block d-flex">
-                                        <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="search" placeholder="Search for store">
-                                        <!-- Search Button -->
-                                        <button class="btn btn-main">SEARCH</button>
-                                    </div>
+                                <div class="form-group col-md-3">
+                                    <input type="text" class="form-control" id="inputCategory4" placeholder="Category">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <input type="text" class="form-control" id="inputLocation4" placeholder="Location">
+                                </div>
+                                <div class="form-group col-md-2">
+
+                                    <button type="submit" class="btn btn-primary">Search Now</button>
                                 </div>
                             </div>
                         </form>
-
                     </div>
-
                 </div>
             </div>
         </div>
-        <!-- Container End -->
     </section>
 
-    <!--===================================
-=            Client Slider            =
-====================================-->
-    <?php echo $this->include('Web/Layout/_session_messages'); ?>
+    <?php echo $this->include('Dashboard/Layout/_session_messages'); ?>
     <!-- Page content-->
     <?php echo $this->renderSection('content') ?>
-
-    <!--===========================================
-=            Popular deals section            =
-============================================-->
-
-
 
     <!--============================
 =            Footer            =
@@ -293,16 +243,15 @@
 
     <!-- JAVASCRIPTS -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
     <script src="<?php echo site_url('web/'); ?>plugins/bootstrap/dist/js/popper.min.js"></script>
     <script src="<?php echo site_url('web/'); ?>plugins/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="<?php echo site_url('web/'); ?>plugins/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+
     <script src="<?php echo site_url('web/'); ?>plugins/slick-carousel/slick/slick.min.js"></script>
 
     <script src="<?php echo site_url('web/'); ?>plugins/fancybox/jquery.fancybox.pack.js"></script>
     <script src="<?php echo site_url('web/'); ?>plugins/smoothscroll/SmoothScroll.min.js"></script>
     <script src="<?php echo site_url('web/'); ?>js/scripts.js"></script>
-
-    <script src="<?php echo site_url('manager_assets/toastr/toastr.min.js'); ?>"></script>
 
     <?php echo $this->renderSection('scripts'); ?>
 
